@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://rizhiyi.netlify.app'
 languageCode = 'en-us'
 title = '日志易文档'
 theme = 'basic'
