@@ -1,0 +1,45 @@
+name: Publish to GH Pages
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Checkout destination
+        uses: actions/checkout@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          ref: gh-pages
+          path: built-site
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: npm install
+        run: npm install
+
+      - name: npm build
+        run: npm run build
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cp -R public/* ${GITHUB_WORKSPACE}/built-site/
+          cd ${GITHUB_WORKSPACE}/built-site
+          git add .
+          git config user.name 'vector1983'
+          git config user.email 'hwfb@163.com'
+          git commit -m 'Updated site'
+          git push          
+
