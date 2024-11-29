@@ -1,0 +1,25 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = '日志易文档'
+theme = 'basic'
+disqusShortname = "rizhiyi"
+googleAnalytics = "G-EB6GT7JYZ8"
+pygmentsUseClasses = true
+pagination.pagerSize = 10
+
+[params]
+author = "胡伟"
+description = "日志易产品文档"
+gh_url = "https://api.github.com/users"
+gh_user = "vector1983"
+
+[permalinks]
+posts = "posts/:year/:month/:slug/"
+year = "/posts/:slug/"
+month = "/posts/:slug/"
+
+[taxonomies]
+year = "year"
+month = "month"
+tag = "tags"
+category = "categories"
